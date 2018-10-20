@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算器</title>
+   <style type="text/css">
+   button{
+		width:45px;
+		height:35px;
+		border:1px solid black;
+        background-color:#F8F8FF;
+ 		outline-color:#98F5FF;
+   }
+   input{
+   		width:188px;
+		height:35px;
+		font-size:20px; 
+		line-height:30px;
+		letter-spacing:2px;
+   }
+</style>
+</head>
+<body>
+   
+<input id="demo" value=" "></input><br><br>
+
+<button id="button%" type="Button" value="%" onclick="MyFunction()">%</button>
+<button id="buttonC" type="Button" value="C" onclick="MyFunction()">C</button>
+<button id="button⬅" type="Button" value="" onclick="MyFunction()">←</button>
+<button id="button÷" type="Button" value="÷" onclick="MyFunction()">÷</button>
+<br><br>
+<button id="button7" type="Button" value=7 onclick="MyFunction()">7</button>
+<button id="button8" type="Button" value=8 onclick="MyFunction()">8</button>
+<button id="button9" type="Button" value=9 onclick="MyFunction()">9</button>
+<button id="buttonx" type="Button" value="x" onclick="MyFunction()">x</button>
+<br><br>
+<button id="button4" type="Button" value=4 onclick="MyFunction()">4</button>
+<button id="button5" type="Button" value=5 onclick="MyFunction()">5</button>
+<button id="button6" type="Button" value=6 onclick="MyFunction()">6</button>
+<button id="button-" type="Button" value="-" onclick="MyFunction()">-</button>
+<br><br>
+<button id="button1" type="Button" value=1 onclick="MyFunction()">1</button>
+<button id="button2" type="Button" value=2 onclick="MyFunction()">2</button>
+<button id="button3" type="Button" value=3 onclick="MyFunction()">3</button>
+<button id="button+" type="Button" value="+" onclick="MyFunction()">+</button>
+<br><br>
+<button id="button±" type="Button" value="±" onclick="MyFunction()">±</button>
+<button id="button0" type="Button" value=0 onclick="MyFunction()">0</button>
+<button id="button." type="Button" value="." onclick="MyFunction()">.</button>
+<button id="button=" type="Button" value="=" onclick="MyFunction()">=</button>
+
+<script>
+var last = 0;
+var left = 0;
+var right = 0;
+var op = null;
+var zf = null;
+var result = 0;
+function MyFunction(){
+    n = event.target.id
+    if(n=="button0"||n=="button1"||n=="button2"||n=="button3"
+       ||n=="button4"||n=="button5"||n=="button6"||n=="button7"
+       ||n=="button8"||n=="button9"){
+         x = document.getElementById(n);
+         document.getElementById("demo").value+=x.value;
+   }
+   else if(n=="button+"){
+       left = parseFloat(document.getElementById("demo").value);    //点击操作符获取当前文本框内容作为左值
+       op = "+";
+       document.getElementById("demo").value+="+";
+       last = document.getElementById("demo").value;
+   }
+   else if(n=="button-"){
+       left = parseFloat(document.getElementById("demo").value);
+       op = "-";
+       document.getElementById("demo").value+="-";
+       last = document.getElementById("demo").value;
+   }
+   else if(n=="buttonx"){
+       left = parseFloat(document.getElementById("demo").value);
+       op = "x";
+       document.getElementById("demo").value+="x";
+       last = document.getElementById("demo").value;
+   }
+   else if(n=="button÷"){
+       left = parseFloat(document.getElementById("demo").value);
+       op = "÷";
+       document.getElementById("demo").value+="÷";
+       last = document.getElementById("demo").value;
+   }
+   else if(n=="button%"){
+       left = parseFloat(document.getElementById("demo").value);
+       op = "%";
+       document.getElementById("demo").value+="%";
+       last = document.getElementById("demo").value;
+   }
+   else if(n=="buttonC"){
+       document.getElementById("demo").value=null;
+   }
+   else if(n=="button⬅"){
+	   var len = document.getElementById("demo").value.length;
+       document.getElementById("demo").value=document.getElementById("demo").value.slice(0,len-1);
+   }
+   else if(n=="button±"){
+	   if(zf == null){
+	       document.getElementById("demo").value='-';
+	       zf = '-';
+	   }else{
+		   document.getElementById("demo").value='+'
+		   zf = null;
+	   }
+   }
+   else if(n=="button."){
+       document.getElementById("demo").value+=".";
+   }
+   else if(n=="button="){
+      right = parseFloat(document.getElementById("demo").value.slice(last.length));			//获取操作符后的右值
+      document.getElementById("demo").value+="=";
+      switch(op){
+         case "+":
+           result = left + right;
+           document.getElementById("demo").value+=result;
+           break;
+         case "-":
+           result = left - right;
+           document.getElementById("demo").value+=result;
+           break;
+         case "x":
+           result = left * right;
+           document.getElementById("demo").value+=result;
+           break;
+         case "÷":
+           result = left / right;
+           document.getElementById("demo").value+=result;
+           break;
+         case "%":
+             result = left % right;
+             document.getElementById("demo").value+=result;
+             break;
+      }
+   }
+   else{
+
+   }
+
+
+}
+</script>
+</body>
+</html>
