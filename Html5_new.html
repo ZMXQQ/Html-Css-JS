@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>test_1</title>
+	<link rel="stylesheet" type="text/css" href="test_1.css">
+</head>
+<body>
+	<div>
+		<form>
+			<p>
+			<label>Title</label>
+			<input type="text" list="mydata"  name="Title">
+			<datalist id="mydata">
+				<option label="Mr" value="Mister">
+				<option label="Mrs" value="MIstress">
+				<option label="Ms" value="Miss">
+			</datalist>
+			</p>
+			<p>
+				<label>	Name </label>
+				<input type="text" name="Name" required>
+			</p>
+			<p>
+				<label>PhoneNumber(+86)</label>
+				<input type="text" pattern="[0-9]{11}" name="PhoneNumber(+86)" style="color: #999" value="(请输入11位移动电话号)" onfocus="if(this.value=='(请输入11位移动电话号)'){this.value=''; this.style.color='#424242';}" onblur="if(this.value==''){this.value='(请输入11位移动电话号)'; this.style.color='#999';}">
+			</p>
+			<p>
+				<label>Email address</label>
+				<input type="Email" name="Email address" value="xxx@gmail.com" onfocus="if(this.value=='xxx@gmail.com'){this.value=''; this.style.color='#424242';}" onblur="if(this.value==''){this.value='xxx@gmail.com'; this.style.color='#999';}" style="color: #999">
+			</p>
+			<p>
+				<label>Your website</label>
+				<input type="url" name="Your website" style="color: #999" value="www.yoursite.com" onfocus="if(this.value=='www.yoursite.com'){this.value=''; this.style.color='#424242';}" onblur="if(this.value==''){this.value='www.yoursite.com'; this.style.color='#999';}">	
+			</p>
+			<p>
+				<label>Nr.of items to order</label>
+				<input type="number" min="1" max="10" value="1" name="Nr.of items to order">
+			</p>
+			<p>
+				<label>Length</label>
+				<input type="range" min="1" max="10" value="1" name="Length">
+			</p>
+			<p>
+				<label>Delivery date</label>
+				<input type="date" min="2012-12-16" name="Delivery date">
+			</p>
+			<p>
+				<label>Time of delivery</label>
+				<input type="time" step="60" name="Time of delivery">
+			</p>
+			<p>
+				<label>Color of the item</label>
+				<input type="color" value="#f40" name="Color of the item">
+			</p>
+			<p>
+				<label> </label>
+				<input type="submit" value="提交"> <input type="reset" value="清空"> 
+			</p>
+		</form>
+		
+	</div>
+</body>
+</html>

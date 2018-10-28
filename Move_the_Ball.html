@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>test</title>
+</head>
+<body>
+	<canvas id="myCanvas" width="300" height="400" style="border:1px solid #f40;">Your browser does not support the canvas element.</canvas>
+
+		<script type="text/javascript">
+
+			var c=document.getElementById("myCanvas");
+			var cxt=c.getContext("2d");
+			var radiu = 15;
+			var color_1 = "#1E90FF";
+			var x = radiu;
+			var y = radiu;
+			var dx = 1;//水平速度
+			var dy = 1;
+			var g = 10;//自由落体
+
+			function drawBall(){
+				cxt.beginPath();
+				cxt.arc(x,y,radiu,0,Math.PI*2,true);
+				cxt.fillStyle=color_1;
+				cxt.fill();
+				cxt.closePath();
+			}
+
+			function draw() {
+				cxt.clearRect(0, 0, c.width, c.height);
+				drawBall();
+				if(x + dx + radiu> c.width || x + dx - radiu< 0) {
+				    dx = -dx;
+				    color_1 = Color();
+
+				}
+				if(y + dy + radiu> c.height || y + dy - radiu< 0) {
+				    dy = -dy;
+				    color_1 = Color();
+				}
+				x+=dx;
+				y+=dy;
+			}
+
+			function Color(){
+			     var r = Math.floor(Math.random()*255);
+			     var g = Math.floor(Math.random()*255);
+			     var b = Math.floor(Math.random()*255);
+			     return 'rgba('+ r +','+ g +','+ b +',0.8)';
+			 }
+
+			setInterval(draw, 1);
+
+
+		</script>
+    
+</body>
+</html>
